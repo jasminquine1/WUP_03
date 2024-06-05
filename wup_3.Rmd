@@ -9,35 +9,60 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-```{r include=FALSE}
-require(tidyverse)
-require(tigerstats)
-davisdata <- read.csv(file="UCDavis.csv")
-```
-## Our Goal is to answer this question Is there a difference between the alcohol consumed between the row
-## you choose to sit in??
+# Introduction
+Our goal is to answer this question is there a difference between the alcohol consumed between the row you choose to sit in??
 
-## Now with ggplot - first select the basic data
+The data came from UCDavis in the year...
+
+$H_0$: There is no difference between the average number of drinks imbibed between people conditioned on the row they sit in.
+
+$H_A$: The average number drinks is different between at least two rows. 
+
+# Method
+In the data set davisdata is a categorical variable, and alcohol is numerical.
+
+We try to predict alcohol ~ seat so we used the numerical~cat helper file
+
+##Result
+
+
+##Descriptive results 
+
+##Graphical Summary
 
 ```{r}
-basicCN <- ggplot(davisdata,aes(y=alcohol,x=Seat))
-```
-## Now add in boxplot
+basicCN <- ggplot(davisdata,aes(x=Seat,y=alcohol))
 
-```{r}
 basicCN + geom_boxplot()
 ```
-  
-  
-### get fancy  
+
+
+
+This graph shows...
+
+##Numerical Summary
 
 ```{r}
-basicCN + geom_boxplot(notch=TRUE,outlier.color = "red") + stat_boxplot(geom ='errorbar') + labs(title="Fancy notch boxplot \n with 2 lines")
+favstats(alcohol~Seat,data=ucdavis1)
 ```
 
-## Numerical Summarys 
+The numerical summary shows that
 
-## Inferential Tests
+##Inferential Results 
+
+```{r}
+model1 <- aov(alcohol~Seat,data=davisdata)
+summary.aov(model1)
+```
+
+
+The p-value is 0.000006, less than 0.05 so we can reject the null hypothesis.
+There is a difference in alchol consumption on where people sit 
+
+```{r}
+plot(TukeyHSD(model1))
+```
+
 
 ## Conclusions
 
