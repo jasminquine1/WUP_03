@@ -12,7 +12,8 @@ knitr::opts_chunk$set(echo = TRUE)
 # Introduction
 Our goal is to answer this question is there a difference between the alcohol consumed between the row you choose to sit in??
 
-The data came from UCDavis in the year...
+## Our Goal is to answer this question Is there a difference between the alcohol consumed between the row
+## you choose to sit in??  
 
 $H_0$: There is no difference between the average number of drinks imbibed between people conditioned on the row they sit in.
 
@@ -31,14 +32,12 @@ We try to predict alcohol ~ seat so we used the numerical~cat helper file
 ##Graphical Summary
 
 ```{r}
-basicCN <- ggplot(davisdata,aes(x=Seat,y=alcohol))
-
-basicCN + geom_boxplot()
+basicCN <- ggplot(davisdata,aes(y=alcohol,x=Seat))
 ```
 
 
 
-This graph shows...
+The graph shows that the back seats consume more alcohol than both the front or the middle seats.
 
 ##Numerical Summary
 
@@ -46,7 +45,7 @@ This graph shows...
 favstats(alcohol~Seat,data=ucdavis1)
 ```
 
-The numerical summary shows that
+The numerical summary shows that the back seat consumes about 55% where as the middle seat consumes 35%, and the front seats consumes 20%.
 
 ##Inferential Results 
 
@@ -57,13 +56,27 @@ summary.aov(model1)
 
 
 The p-value is 0.000006, less than 0.05 so we can reject the null hypothesis.
-There is a difference in alchol consumption on where people sit 
+There is a difference in alcohol consumption on where people sit.
+
+### Get Fancy 
+
+```{r}
+basicCN + geom_boxplot(notch=TRUE,outlier.color = "red") + stat_boxplot(geom ='errorbar') + labs(title="Fancy notch boxplot \n with 2 lines")
+```
+
+This graph shows that there are more students sitting in the back who drink alcohol than the front and middle row. 
+
+### Turkeymodel
 
 ```{r}
 plot(TukeyHSD(model1))
 ```
 
+The turkey model shows there is a difference when seating in the back rather then the front or middle. The back consumes more levels of alcohol than the front or middle. 
 
 ## Conclusions
+
+Our Goal is to answer this question Is there a difference between the alcohol consumed between the row.$H_0$: There is no difference between the average number of drinks imbibed between people conditioned on the row they sit in.$H_A$: The average number drinks is different between at least two rows. The graph shows that the back seats consume more alcohol than both the front or the middle seats.The numerical summary shows that the back seat consumes about 55% where as the middle seat consumes 35%, and the front seats consumes 20%. The p-value is 0.000006, less than 0.05 so we can reject the null hypothesis.
+There is a difference in alcohol consumption on where people sit. This graph shows that there are more students sitting in the back who drink alcohol than the front and middle row. The turkey model shows there is a difference when seating in the back rather then the front or middle. The back consumes more levels of alcohol than the front or middle. 
 
 
