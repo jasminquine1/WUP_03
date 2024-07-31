@@ -88,7 +88,6 @@ The Tukey model indicates a significant difference in alcohol consumption based 
 
 ## Conclusions
 
-Our Goal is to answer this question Is there a difference between the alcohol consumed between the row.$H_0$: There is no difference between the average number of drinks imbibed between people conditioned on the row they sit in.$H_A$: The average number drinks is different between at least two rows. The graph shows that the back seats consume more alcohol than both the front or the middle seats.The numerical summary shows that the back seat consumes about 55% where as the middle seat consumes 35%, and the front seats consumes 20%. The p-value is 0.000006, less than 0.05 so we can reject the null hypothesis.
-There is a difference in alcohol consumption on where people sit. This graph shows that there are more students sitting in the back who drink alcohol than the front and middle row. The turkey model shows there is a difference when seating in the back rather then the front or middle. The back consumes more levels of alcohol than the front or middle. 
+The analysis aims to determine if there is a difference in alcohol consumption based on where people sit. The null hypothesis suggests no difference, while the alternative hypothesis suggests a difference exists. The graph shows higher alcohol consumption in the back seats, supported by a numerical summary indicating the back seats account for 55% of consumption, the middle seats 35%, and the front seats 20%.
 
-
+Statistical analysis confirms these findings. With a p-value of 0.000006, much lower than 0.05, we reject the null hypothesis, indicating a significant difference in alcohol consumption based on seating location. The Tukey model also shows higher alcohol consumption in the back seats compared to the front and middle seats. Therefore, there is a clear difference in alcohol consumption, with students in the back seats drinking more than those in the front and middle rows.
